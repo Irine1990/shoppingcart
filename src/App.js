@@ -1,136 +1,88 @@
-import './App.css';
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import Card from './components/Card';
+import Top from './components/Top';
+import Header from './components/Header';
+import End from './components/End';
 
-
-function App() 
-{
-  const [cart, setadd] = useState(true);
-
+function App() {
+  let [cart, setCart] = useState(0);
+  const products = [
+    {
+      name: 'Fancy Product',
+      image: 'https://dummyimage.com/450x300/dee2e6/6c757d.jpg',
+      price: '$40.00 - $80.00',
+      sale: false,
+    },
+    {
+      name: 'Special Item',
+      image: 'https://dummyimage.com/450x300/dee2e6/6c757d.jpg',
+      price: '$18.00',
+      sale: true,
+      originalPrice: '$20.00',
+      reviews: 5,
+    },
+    {
+      name: 'Sale Item',
+      image: 'https://dummyimage.com/450x300/dee2e6/6c757d.jpg',
+      price: '$25.00',
+      sale: true,
+      originalPrice: '$50.00',
+    },
+    {
+      name: 'Popular Item',
+      image: 'https://dummyimage.com/450x300/dee2e6/6c757d.jpg',
+      price: '$40.00',
+      sale:false,
+      reviews: 5,
+    },
+    {
+      name: 'Sale Item',
+      image: 'https://dummyimage.com/450x300/dee2e6/6c757d.jpg',
+      price: '$25.00',
+      sale: true,
+      originalPrice: '$50.00',
+      reviews: 5,
+    },
+    {
+      name: 'Fancy Product',
+      image: 'https://dummyimage.com/450x300/dee2e6/6c757d.jpg',
+      price: '$120.00',
+      sale: false,
+      originalPrice: '$280.00',
+    },
+    {
+      name: 'Special Item',
+      image: 'https://dummyimage.com/450x300/dee2e6/6c757d.jpg',
+      price: '$18.00',
+      sale: true,
+      originalPrice: '$20.00',
+      reviews: 5,
+    },
+    {
+      name: 'Special Item',
+      image: 'https://dummyimage.com/450x300/dee2e6/6c757d.jpg',
+      price: '$40.00',
+      sale: false,
+      reviews: 5,
+    }
+  ];
   return (
-    <div className="App">
-      <div className="navbar">
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-          <div class="container-fluid">
-            <a class="navbar-bra
-            
-            nd" href="#">Start Bootstarp</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Shop
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">All Products</a></li>
-                    <li><hr class="dropdown-divider" /></li>
-                    <li><a class="dropdown-item" href="#">Popular Items</a></li>
-                    <li><a class="dropdown-item" href="#">New Arrivals</a></li>
-                  </ul>
-                </li>
-
-              </ul>
-              <div className="cart">
-                <form class="d-flex" role="search">
-                  <button type="button" class="btn btn-Light border border-black">
-                    🛒cart <span class="badge text-bg-dark">0</span>
-                  </button>
-
-                </form>
-              </div>
-
-            </div>
-          </div>
-        </nav>
-      </div>
-
-      <div className="display">
-        <span class="d-block p-2 " id="display1">Shop In Style</span>
-        <span class="d-block p-2 " id="display2">With this homepage template</span>
-      </div>
-
-      <div>
-        <div class="container-fluid text-center">
-          <div class="row">
-            <div class="col-3" id="one">
-              <p className="card1">450✖️300</p>
-              <p className="name1">Fancy Product</p>
-              <p>＄40.00-＄80.00</p><br></br><br></br>
-              <button>View Options</button>
-            </div>
-            <div class="col-3" id="two">
-              <p className="card2">450✖️300</p>
-              <button type="button" class="btn btn-dark" id="sale1">Sale</button>
-              <p className="name2">Special Item</p>
-              <p className="rating1">⭐⭐⭐⭐⭐</p>
-              <span className="strike1">$20.00 </span><span className="strike1">$18.00</span><br></br><br></br>
-              <button className="b3" id="add1" onClick={() => setadd(cart + 1)}>Add to Cart</button>
-            </div>
-            <div class="col-3" id="three">
-              <p className="card3">450✖️300</p>
-              <button type="button" class="btn btn-dark" id="sale1">Sale</button>
-              <p className="name3">Sale Item</p>
-              <span className="strike2">$50.00</span><span>$25.00</span><br></br>
-              <button className="b1" id="add1" onClick={() => setadd(cart + 1)}>Add to Cart</button>
-            </div>
-            <div class="col-3" id="four">
-              <p className="card4">450✖️300</p>
-              <p className="name4">Popular Item</p>
-              <p>⭐⭐⭐⭐⭐</p>
-              <p>$40.00</p><br></br>
-              <button className="b2" id="add1" onClick={() => setadd(cart + 1)}>Add to Cart</button>
-            </div>
+    <>
+      <Top cart={cart} setCart={setCart} />
+      <Header />
+      <section className="py-5">
+        <div className="container px-4 px-lg-5 mt-5">
+          <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+          {products.map((product, index) => (
+              <Card key={index} product={product} cart={cart} setCart={setCart} />
+            ))}  
+          
           </div>
         </div>
-      </div>
-
-
-
-      <div class="container-fluid text-center">
-        <div class="row">
-          <div class="col-3" id="one">
-            <p className="card1">450✖️300</p>
-            <button type="button" class="btn btn-dark" id="sale1">Sale</button>
-            <p className="name6">Fancy Product</p>
-            <p className="name7">＄40.00-＄80.00</p><br></br><br></br>
-            <button className="b4">View Options</button>
-          </div>
-          <div class="col-3" id="two">
-            <p className="card2">450✖️300</p>
-            <p className="name5">Special Item</p>
-            <p>⭐⭐⭐⭐⭐</p>
-            <span className="strike1">$20.00 </span><span>$18.00</span><br></br><br></br>
-            <button id="add1" onClick={() => setadd(cart + 1)}>Add to Cart</button>
-          </div>
-          <div class="col-3" id="three">
-            <p className="card3">450✖️300</p>
-            <button type="button" class="btn btn-dark" id="sale1">Sale</button>
-            <p className="name3">Sale Item</p>
-            <span className="strike2">$50.00</span><span>$25.00</span><br></br>
-            <button className="b1" id="add1">Add to Cart</button>
-          </div>
-          <div class="col-3" id="four">
-            <p className="card4">450✖️300</p>
-            <p className="name4">Popular Item</p>
-            <p>⭐⭐⭐⭐⭐</p>
-            <p>$40.00</p><br></br>
-            <button className="b2" id="add1" onClick={() => setadd(cart + 1)}>Add to Cart</button>
-          </div>
-        </div>
-      </div>
-      <div>
-        <p className="name8">Copywrite your website @ 2023</p>
-      </div>
-    </div >
-  )
+      </section>
+      <End />
+    </>
+  );
 }
 
-export default App();
+export default App;
